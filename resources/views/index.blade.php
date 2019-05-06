@@ -48,6 +48,7 @@
             </form>
         </div>
     </nav>
+    <p>{{ $ver }}</p>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
