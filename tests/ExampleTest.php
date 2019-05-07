@@ -15,7 +15,7 @@ class ExampleTest extends TestCase
         $this->get('/');
 
         $this->assertContains(
-            $this->app->version(), $this->response->getContent()
+            'Page analyzer', $this->response->getContent()
         );
     }
 }

@@ -1,7 +1,9 @@
-test:
-	phpunit
 install:
 	composer install
+test:
+	composer run-script phpunit tests
+lint:
+	composer run-script phpcs -- --standard=PSR2 public
 run:
 	php -S localhost:8000 -t public
 logs:
