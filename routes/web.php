@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,5 +11,6 @@
 */
 
 $router->get('/', function () use ($router) {
+    Debugbar::warning('Watch out…');
     return view('index', ['ver' => 'aaa']);
 });

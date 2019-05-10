@@ -49,6 +49,7 @@
         </div>
     </nav>
     <p>{{ $ver }}</p>
+    <?php Debugbar::warning('Watch out…'); ?>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
