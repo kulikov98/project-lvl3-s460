@@ -10,7 +10,9 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    Debugbar::warning('Watch out…');
-    return view('index', ['ver' => 'aaa']);
-});
+//$router->get('user/{id}', 'UserController@show');
+
+$router->get('/', 'HomeController@show');
+
+$router->post('/domains', 'DomainsController@add');
+$router->get('/domains/{id}', 'DomainsController@show');
