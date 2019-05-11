@@ -21,8 +21,8 @@ class DomainsController extends Controller
     {
         DB::table('domains')->insert([
             'name' => $_POST['url'],
-            'created_at' => time(),
-            'updated_at' => time()
+            'created_at' => date('Y/m/d h:i:s', time()),
+            'updated_at' => date('Y/m/d h:i:s', time())
         ]);
 
         $id = DB::getPdo()->lastInsertId();
