@@ -1,4 +1,5 @@
 <?php
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -10,9 +11,14 @@
 |
 */
 
-//$router->get('user/{id}', 'UserController@show');
+$router->get('/', [
+    'as' => 'home', 'uses' => 'HomeController@show'
+]);
 
-$router->get('/', 'HomeController@show');
+$router->post('/domains', [
+    'as' => 'addDomain', 'uses' => 'DomainsController@add'
+]);
 
-$router->post('/domains', 'DomainsController@add');
-$router->get('/domains/{id}', 'DomainsController@show');
+$router->get('/domains/{id}', [
+    'as' => 'showDomains', 'uses' => 'DomainsController@show'
+]);

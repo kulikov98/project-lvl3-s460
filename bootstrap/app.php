@@ -23,7 +23,7 @@ $app = new Laravel\Lumen\Application(
 
 $app->withFacades(true, ['Barryvdh\Debugbar\Facade' => 'Debugbar']);
 
-$app->withEloquent();
+//$app->withEloquent();
 
 /*
 |--------------------------------------------------------------------------

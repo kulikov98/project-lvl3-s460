@@ -18,6 +18,6 @@ class HomeController extends Controller
 
     public function show()
     {
-        return view('index', ['ver' => 'aaa']);
+        return view('index');
     }
 }

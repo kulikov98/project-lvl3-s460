@@ -11,14 +11,6 @@
 */
 
 $app = require __DIR__.'/../bootstrap/app.php';
-//dump($app->config['debugbar']['collectors']['auth']);
-//dump($_ENV);
-
-// DB::table('domains')->delete();
-// $domains = DB::select("SELECT * FROM domains");
-//dump($domains);
-
-Debugbar::warning('Watch out…');
 
 /*
 |--------------------------------------------------------------------------

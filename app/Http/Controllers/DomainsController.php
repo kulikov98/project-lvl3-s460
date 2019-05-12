@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Debugbar;
 use DB;
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class DomainsController extends Controller
 {
@@ -17,17 +18,17 @@ class DomainsController extends Controller
         //
     }
 
-    public function add()
+    public function add(Request $request)
     {
         DB::table('domains')->insert([
-            'name' => $_POST['url'],
-            'created_at' => date('Y/m/d h:i:s', time()),
-            'updated_at' => date('Y/m/d h:i:s', time())
+            'name' => $request->input('url'),
+            'created_at' => Carbon::now()->toDateTimeString(),
+            'updated_at' => Carbon::now()->toDateTimeString()
         ]);
 
         $id = DB::getPdo()->lastInsertId();
 
-        return redirect("/domains/{$id}");
+        return redirect()->route('showDomains', ['id' => $id]);
     }
 
     public function show($id)
