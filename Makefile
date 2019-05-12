@@ -9,4 +9,4 @@ run:
 logs:
 	tail -f storage/logs/lumen.log
 db:
-	php artisan migrate --force
+	php artisan migrate:refresh --seed
