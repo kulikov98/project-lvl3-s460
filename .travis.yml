@@ -13,3 +13,10 @@ before_script:
 
 script:
   - make db lint test
+
+env:
+  global:
+  - DB_CONNECTION=pgsql
+  - DB_DATABASE=domains
+  - DB_USERNAME=postgres
+  - DB_PASSWORD=""
