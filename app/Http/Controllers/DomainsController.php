@@ -37,4 +37,11 @@ class DomainsController extends Controller
 
         return view('domain', ['domain' => $domain]);
     }
+
+    public function showAll()
+    {
+        $domains = DB::table('domains')->paginate(10);
+
+        return view('domains', ['domains' => $domains]);
+    }
 }
