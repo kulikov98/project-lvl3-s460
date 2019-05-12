@@ -5,4 +5,11 @@ php:
 install:
   - make install
 
-script: make lint test
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'create database domains;' -U postgres
+
+script:
+  - make db lint test
