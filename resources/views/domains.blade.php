@@ -20,7 +20,7 @@
         </tr>
         @empty
         <tr>
-            <td colspan="2" class="text-center">No domains</td>
+            <td colspan="3" class="text-center">No domains</td>
         </tr>
         @endforelse
     </tbody>
