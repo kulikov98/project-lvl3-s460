@@ -3,6 +3,7 @@
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 
 class DomainsTableSeeder extends Seeder
 {
@@ -13,14 +14,26 @@ class DomainsTableSeeder extends Seeder
      */
     public function run()
     {
-        $domainsNum = 30;
+        $urls = [
+            'http://youtube.com',
+            'http://yandex.com',
+            'http://google.com',
+            'http://vk.com',
+            'http://facebook.com'
+        ];
 
-        for ($i = 0; $i < $domainsNum; $i += 1) {
+        $client = app()->httpClient;
+
+        foreach ($urls as $url) {
+            $response = $client->request('GET', $url);
+
             DB::table('domains')->insert([
-                'name' => "https://" . Str::random(5) . ".com",
-                'response_code' => "200",
-                'response_content_length' => "100500",
-                'response_body' => 'body'
+                'name' => $url,
+                'response_code' => $response->getStatusCode(),
+                'response_content_length' => $response->getHeaderLine('content-length'),
+                'response_body' => $response->getBody(),
+                'created_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => Carbon::now()->toDateTimeString()
             ]);
         }
     }
