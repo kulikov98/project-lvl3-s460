@@ -17,8 +17,8 @@ class CreateDomainsTable extends Migration
             $table->bigIncrements('id');
             $table->char('name', 255);
             $table->smallInteger('response_code');
-            $table->integer('response_content_length');
-            $table->text('response_body');
+            $table->integer('response_content_length')->nullable();
+            $table->text('response_body')->nullable();
             $table->timestamps();
         });
     }
