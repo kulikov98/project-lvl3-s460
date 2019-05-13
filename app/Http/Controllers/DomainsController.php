@@ -25,11 +25,14 @@ class DomainsController extends Controller
         $client = app()->httpClient;
         $response = $client->request('GET', $url);
 
+        $length = empty($response->getHeaderLine('content-length')) ? 0 : $response->getHeaderLine('content-length');
+        $body = empty($response->getBody()) ? null : $response->getBody();
+
         DB::table('domains')->insert([
             'name' => $url,
             'response_code' => $response->getStatusCode(),
-            'response_content_length' => $response->getHeaderLine('content-length'),
-            'response_body' => $response->getBody(),
+            'response_content_length' => $length,
+            'response_body' => $body,
             'created_at' => Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon::now()->toDateTimeString()
         ]);
