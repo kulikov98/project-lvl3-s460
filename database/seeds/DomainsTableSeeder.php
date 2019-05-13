@@ -34,7 +34,7 @@ class DomainsTableSeeder extends Seeder
                 'name' => $url,
                 'response_code' => $response->getStatusCode(),
                 'response_content_length' => $length,
-                //'response_body' => $body,
+                'response_body' => $body,
                 'created_at' => Carbon::now()->toDateTimeString(),
                 'updated_at' => Carbon::now()->toDateTimeString()
             ]);
