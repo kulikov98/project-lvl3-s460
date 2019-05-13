@@ -20,8 +20,16 @@ class DomainsController extends Controller
 
     public function add(Request $request)
     {
+        $url = $request->input('url');
+
+        $client = app()->httpClient;
+        $response = $client->request('GET', $url);
+
         DB::table('domains')->insert([
-            'name' => $request->input('url'),
+            'name' => $url,
+            'response_code' => $response->getStatusCode(),
+            'response_content_length' => $response->getHeaderLine('content-length'),
+            'response_body' => $response->getBody(),
             'created_at' => Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon::now()->toDateTimeString()
         ]);

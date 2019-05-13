@@ -13,9 +13,14 @@ class DomainsTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 30; $i += 1) {
+        $domainsNum = 30;
+
+        for ($i = 0; $i < $domainsNum; $i += 1) {
             DB::table('domains')->insert([
-                'name' => "https://" . Str::random(5) . ".com"
+                'name' => "https://" . Str::random(5) . ".com",
+                'response_code' => "200",
+                'response_content_length' => "100500",
+                'response_body' => 'body'
             ]);
         }
     }
