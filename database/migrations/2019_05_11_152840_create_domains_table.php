@@ -19,6 +19,9 @@ class CreateDomainsTable extends Migration
             $table->smallInteger('response_code');
             $table->integer('response_content_length');
             $table->text('response_body')->nullable();
+            $table->text('h1')->nullable();
+            $table->text('meta_keywords')->nullable();
+            $table->text('meta_description')->nullable();
             $table->timestamps();
         });
     }

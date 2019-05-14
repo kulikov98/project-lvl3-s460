@@ -50,6 +50,10 @@ $app->bind('httpClient', function () {
     return new \GuzzleHttp\Client();
 });
 
+$app->bind('document', function () {
+    return new \DiDom\Document;
+});
+
 /*
 |--------------------------------------------------------------------------
 | Register Middleware
