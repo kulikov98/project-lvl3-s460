@@ -32,7 +32,7 @@ class DomainsController extends Controller
             'name' => $url,
             'response_code' => $response->getStatusCode(),
             'response_content_length' => $length,
-            'response_body' => $body,
+            'response_body' => mb_convert_encoding($body, "UTF-8"),
             'created_at' => Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon::now()->toDateTimeString()
         ];
