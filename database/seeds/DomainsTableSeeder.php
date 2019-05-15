@@ -17,7 +17,6 @@ class DomainsTableSeeder extends Seeder
         $urls = [
             'http://youtube.com',
             'http://yandex.com',
-            'http://google.com',
             'http://vk.com',
             'http://facebook.com'
         ];
