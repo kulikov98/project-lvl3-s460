@@ -3,6 +3,11 @@
 
 @section('content')
 <p></p>
+@isset($errors)
+<div class="alert alert-danger" role="alert">
+    {{ dump($errors) }}
+</div>
+@endisset
 <div class="jumbotron">
     <form method="POST" action="/domains">
         <div class="form-group">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -21,12 +22,22 @@ class DomainsController extends Controller
     public function add(Request $request)
     {
         $url = $request->input('url');
+        
+        $v = Validator::make(
+            ['url' => $url],
+            ['url' => 'required|active_url']
+        );
+        if ($v->fails()) {
+            $error = $v->errors()->first();
+            return $error;
+        }
 
         $client = app()->httpClient;
         $response = $client->request('GET', $url);
 
         $length = empty($response->getHeaderLine('content-length')) ? 0 : $response->getHeaderLine('content-length');
-        $body = empty($response->getBody()) ? null : (string) $response->getBody();
+        $body = empty($response->getBody()) ? null : (string)$response->getBody();
+
 
         $domainData = [
             'name' => $url,
