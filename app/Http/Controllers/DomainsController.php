@@ -22,7 +22,7 @@ class DomainsController extends Controller
     public function add(Request $request)
     {
         $url = $request->input('url');
-        
+
         $v = Validator::make(
             ['url' => $url],
             ['url' => 'required|active_url']
@@ -35,9 +35,13 @@ class DomainsController extends Controller
         $client = app()->httpClient;
         $response = $client->request('GET', $url);
 
-        $body = (string) $response->getBody();
-        $length = empty($response->getHeaderLine('content-length')) ? strlen($body) : $response->getHeaderLine('content-length');
-        
+        $body = (string)$response->getBody();
+        if (empty($response->getHeaderLine('content-length'))) {
+            strlen($body);
+        } else {
+            $response->getHeaderLine('content-length');
+        }
+
         $domainData = [
             'name' => $url,
             'response_code' => $response->getStatusCode(),
