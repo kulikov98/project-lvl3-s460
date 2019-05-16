@@ -3,7 +3,7 @@ install:
 test:
 	composer run-script phpunit tests
 lint:
-	composer run-script phpcs -- --standard=PSR2 app/http
+	composer run-script phpcs -- --standard=PSR2 app/Http
 run:
 	php -S localhost:8000 -t public
 logs:
