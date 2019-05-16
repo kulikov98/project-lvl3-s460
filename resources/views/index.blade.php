@@ -11,7 +11,7 @@
 <div class="jumbotron">
     <form method="POST" action="/domains">
         <div class="form-group">
-            <h2>Page speed optimization</h2>
+            <h2>Page SEO analyzer</h2>
             <label for="url">Website URL</label>
             <input type="url" class="form-control" name="url" id="url" aria-describedby="urlHelp" placeholder="Enter url">
             <small id="urlHelp" class="form-text text-muted">example: https://google.com</small>

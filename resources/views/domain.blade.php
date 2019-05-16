@@ -20,9 +20,9 @@
             <td>{{ $domain->name }}</td>
             <td>{{ $domain->response_code }}</td>
             <td>{{ $domain->response_content_length }}</td>
-            <td>{{ $domain->h1 ?? '' }}</td>
-            <td>{{ $domain->meta_keywords ?? '' }}</td>
-            <td>{{ $domain->meta_description ?? '' }}</td>
+            @if ($domain->h1) <td>{{ $domain->h1 }}</td> @else <td><p class="text-danger">empty</p></td> @endif
+            @if ($domain->meta_keywords) <td>{{ $domain->meta_keywords }}</td> @else <td><p class="text-danger">empty</p></td> @endif
+            @if ($domain->meta_description) <td>{{ $domain->meta_description }}</td> @else <td><p class="text-danger">empty</p></td> @endif
         </tr>
     </tbody>
 </table>
