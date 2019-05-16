@@ -3,9 +3,9 @@
 
 @section('content')
 <p></p>
-@isset($errors)
+@isset($error)
 <div class="alert alert-danger" role="alert">
-    {{ dump($errors) }}
+    {{ $error }}
 </div>
 @endisset
 <div class="jumbotron">

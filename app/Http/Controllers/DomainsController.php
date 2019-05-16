@@ -29,16 +29,15 @@ class DomainsController extends Controller
         );
         if ($v->fails()) {
             $error = $v->errors()->first();
-            return $error;
+            return view('index', ['error' => $error]);
         }
 
         $client = app()->httpClient;
         $response = $client->request('GET', $url);
 
-        $length = empty($response->getHeaderLine('content-length')) ? 0 : $response->getHeaderLine('content-length');
-        $body = empty($response->getBody()) ? null : (string) $response->getBody();
-
-
+        $body = (string) $response->getBody();
+        $length = empty($response->getHeaderLine('content-length')) ? strlen($body) : $response->getHeaderLine('content-length');
+        
         $domainData = [
             'name' => $url,
             'response_code' => $response->getStatusCode(),
