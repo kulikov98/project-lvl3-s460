@@ -37,9 +37,9 @@ class DomainsController extends Controller
 
         $body = (string)$response->getBody();
         if (empty($response->getHeaderLine('content-length'))) {
-            strlen($body);
+            $length = strlen($body);
         } else {
-            $response->getHeaderLine('content-length');
+            $length = $response->getHeaderLine('content-length');
         }
 
         $domainData = [
