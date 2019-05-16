@@ -36,14 +36,14 @@ class DomainsController extends Controller
         $response = $client->request('GET', $url);
 
         $length = empty($response->getHeaderLine('content-length')) ? 0 : $response->getHeaderLine('content-length');
-        $body = empty($response->getBody()) ? null : (string)$response->getBody();
+        $body = empty($response->getBody()) ? null : (string) $response->getBody();
 
 
         $domainData = [
             'name' => $url,
             'response_code' => $response->getStatusCode(),
             'response_content_length' => $length,
-            'response_body' => iconv(mb_detect_encoding($body, mb_detect_order(), true), "UTF-8", $body),
+            'response_body' => mb_convert_encoding($body, 'UTF-8');
             'created_at' => Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon::now()->toDateTimeString()
         ];
