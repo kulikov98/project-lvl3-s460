@@ -6,17 +6,19 @@ use DB;
 use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use \GuzzleHttp\Client;
 
 class DomainsController extends Controller
 {
+    private $guzzle;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Client $guzzle)
     {
-        //
+        $this->guzzle = $guzzle;
     }
 
     public function add(Request $request)
@@ -32,8 +34,8 @@ class DomainsController extends Controller
             return view('index', ['error' => $error]);
         }
 
-        $client = app()->httpClient;
-        $response = $client->request('GET', $url);
+        //$client = app()->make('httpClient');
+        $response = $this->guzzle->request('GET', $url);
 
         $body = (string)$response->getBody();
         if (empty($response->getHeaderLine('content-length'))) {

@@ -12,10 +12,7 @@ class IndexPageTest extends TestCase
      */
     public function testIndexPage()
     {
-        $this->get('/');
-
-        $this->assertContains(
-            'Page analyzer', $this->response->getContent()
-        );
+        $response = $this->call('GET', '/');
+        $this->assertEquals(200, $response->status());
     }
 }
