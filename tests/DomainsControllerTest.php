@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Tests;
+//namespace App\Tests;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-
 
 class DomainsPageTest extends TestCase
 {
@@ -17,9 +16,10 @@ class DomainsPageTest extends TestCase
      */
     public function testShowAllDomains()
     {
-        $this->get('/domains');
+        $url = route('showDomains');
+        $this->get($url);
 
-        $domains = DB::table('domains')->limit(10)->get();
+        $domains = \DB::table('domains')->limit(10)->get();
 
         foreach ($domains as $domain) {
             $this->assertContains(
@@ -34,7 +34,8 @@ class DomainsPageTest extends TestCase
      */
     public function testShowOneDomain($expected, $id)
     {
-        $this->get("/domains/{$id}");
+        $url = route('showDomain', ['id' => $id]);
+        $this->get($url);
         $this->assertContains($expected, $this->response->getContent());
     }
 
@@ -57,7 +58,8 @@ class DomainsPageTest extends TestCase
         $client = new Client(['handler' => $handler]);
         $this->app->instance(\GuzzleHttp\Client::class, $client);
 
-        $this->post('/domains', ['url' => 'http://test.com']);
+        $url = route('addDomain', ['url' => 'http://test.com']);
+        $this->post($url);
         $this->seeInDatabase('domains', [
             'name' => 'http://test.com',
             'response_body' => '!DOCTYPE html',

@@ -9,7 +9,7 @@
 </div>
 @endisset
 <div class="jumbotron">
-    <form method="POST" action="/domains">
+    <form method="POST" action="{{ route('addDomain') }}">
         <div class="form-group">
             <h2>Page SEO analyzer</h2>
             <label for="url">Website URL</label>

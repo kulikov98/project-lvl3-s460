@@ -22,5 +22,5 @@ $router->get('/domains', [
     'as' => 'showDomains', 'uses' => 'DomainsController@showAll'
 ]);
 $router->get('/domains/{id}', [
-    'as' => 'showDomains', 'uses' => 'DomainsController@show'
+    'as' => 'showDomain', 'uses' => 'DomainsController@show'
 ]);

@@ -14,7 +14,7 @@
     <tbody>
         @forelse($domains as $domain)
         <tr>
-            <td><a href="domains/{{ $domain->id }}">{{ $domain->name }}</a></td>
+            <td><a href="{{ route('showDomain', ['id' => $domain->id]) }}">{{ $domain->name }}</a></td>
             <td>{{ $domain->response_code }}</td>
             <td>{{ $domain->response_content_length }}</td>
         </tr>
